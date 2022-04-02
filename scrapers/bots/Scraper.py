@@ -47,9 +47,11 @@ class Houses:
         self.df = self.df.assign(floor = piano['piano_max'])
 
 
-    def dump(self, date):
+    def dump(self, scraper_name: str, date: str):
         try:
             df_old = pd.read_csv(f"data/houses.csv")
+            df_old_others = df_old[df_old['website']!=scraper_name]
+            df_old = df_old[df_old['website']==scraper_name]
 
             removed = df_old[~df_old['id'].isin(self.df['id'])]
             new = self.df[~self.df['id'].isin(df_old['id'])]
@@ -67,7 +69,7 @@ class Houses:
             new = new.assign(check_date = date)
             common = common.assign(check_date = date)
 
-            self.df = pd.concat([new, removed, common], ignore_index=True)
+            self.df = pd.concat([new, removed, common, df_old_others], ignore_index=True)
         except FileNotFoundError:
             self.df = self.df.assign(remove_date = np.nan)
             self.df = self.df.assign(scrape_date = date)
