@@ -36,7 +36,7 @@ class EnglishLemmatizer(Lemmatizer):
 
 
 class ItalianLemmatizer(Lemmatizer):
-    def __init__(self, treetagger_dir=None):
+    def __init__(self, treetagger_dir='/usr/local/tree-tagger'):
         import warnings
         try:
             with warnings.catch_warnings():

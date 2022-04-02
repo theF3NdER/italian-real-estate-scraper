@@ -21,14 +21,14 @@ parser.add_argument('--query', '-q',
                     required=False,
                     default="small",
                     dest="query")
-parser.add_argument('--comune', '-c',
+parser.add_argument('--municipality', '-m',
                     help="Seleziona il comune per subito",
                     type=str,
                     choices=comuni_catania,
                     nargs = '+',
                     required=False,
                     default=comuni_catania,
-                    dest="comune")
+                    dest="municipality")
 parser.add_argument('--typology', '-t',
                     help="Set the kind of realty (ig: apartment, villa)",
                     type=str,
@@ -37,6 +37,14 @@ parser.add_argument('--typology', '-t',
                     required=False,
                     default=["appartamenti"],
                     dest="typology")
+parser.add_argument('--trace',
+                    help="Select whether or not to show the browser. True by default",
+                    action='store_true',
+                    dest='trace', default=False)
+parser.add_argument('--headless',
+                    help="Select whether or not to show the browser. True by default (showing)",
+                    action='store_true',
+                    dest='headless', default=False)
 
 args =  parser.parse_args()
 scraper = args.scraper
@@ -46,4 +54,6 @@ for t in args.typology:
     for s in scraper:
         typology.extend(typology_map[s][t])
 query = args.query
-comune = args.comune
+municipality = args.municipality
+trace = args.trace
+headless = args.headless

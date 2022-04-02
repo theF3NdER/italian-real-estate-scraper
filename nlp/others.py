@@ -83,7 +83,7 @@ def handle_text_descriptions(df, title_column_name, column_name, logger):
         df[k] = df.loc[:, [c for c in v+[k] if c in df.columns]].any(axis=1)
     df.drop(swap_dict(synonyms_map).keys(), axis=1, inplace=True)
     textFeatCol = [col for col in df.columns if col.endswith('_text')]
-    # df.drop(['description', 'description_lem', 'relevants', 'title_desc'], axis=1, inplace=True)
-    df.drop(['description', 'description_lem', 'title_desc'], axis=1, inplace=True)
+    df.drop(['description', 'description_lem', 'relevants', 'title_desc'], axis=1, inplace=True)
+    # df.drop(['description', 'description_lem', 'title_desc'], axis=1, inplace=True)
 
     return df, textFeatCol

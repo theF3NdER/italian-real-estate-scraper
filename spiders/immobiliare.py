@@ -46,7 +46,7 @@ class ImmobiliareSpider():
         self.df, textFeatCol = handle_text_descriptions(self.df, 'title', 'description', self.logger)
 
 
-        self.df = self.df.assign(interess = 0)
+        self.df = self.df.assign(interest = 0)
         self.df = self.df.assign(surface = self.df['surface'].str.extract(r"(\d+)"))
         self.df = self.df.replace(r'^\s*$', np.nan, regex=True)
         self.df = self.df.astype({'surface': float, 'price': float})

@@ -2,7 +2,7 @@ import logging
 import os
 
 def setup_logger(name, log_file,
-                 formatter=logging.Formatter('%(asctime)s %(levelname)s %(message)s'),
+                 formatter=logging.Formatter('%(asctime)s %(module)s %(levelname)s %(message)s'),
                  level=logging.INFO):
     """
     Function to setup a generic loggers.
@@ -39,7 +39,7 @@ def log_end(debug_logger, name):
 
 
 
-comuni_catania = [c.replace('\'', '-').replace(' ', '-').lower() for c in [
+comuni_catania = [
                     "Gravina di Catania",
                     "Mascalucia",
                     "Aci Castello",
@@ -61,7 +61,7 @@ comuni_catania = [c.replace('\'', '-').replace(' ', '-').lower() for c in [
                     "Valverde",
                     "Nicolosi",
                     "Aci Bonaccorsi",
-                    ]]
+                    ]
 
 typology_map = {
     "subito": {
@@ -121,7 +121,7 @@ synonyms_map = {
     "primo_piano_text": ["piano_primo_text"],
     "piano_rialzato_text": ["rialzare_text", "piano_rialzare_text"],
     "etna_text": ["montagna_text"],
-    "NO_text": ["fondachello_text", "galermo_text", "mercato_text", "picanello_text", "librino_text", "nesima_text", "fiumefreddo_text", "obelisco_text", "fasano_text", "castagnola_text", "lido_text", "palestro_text", "bummacaro_text", "villaggio_text", "faro_text", "augusta_text", "vaccarizzo_text"],
+    "NO_text": ["fondachello_text", "galermo_text", "mercato_text", "picanello_text", "librino_text", "nesima_text", "fiumefreddo_text", "obelisco_text", "fasano_text", "castagnola_text", "lido_text", "palestro_text", "bummacaro_text", "villaggio_text", "faro_text", "augusta_text", "vaccarizzo_text", "cercare_text"],
     "palazzo_piccolo_text": ["piccolo_palazzina_text", "piccolo_condominio_text", "piccolo_residence_text", "piccolo_contesto_text", "piccolo_palazzetto_text", "piccolo_complesso_text", "residenziale_text", "tranquillo_text", "silenzioso_text", "tranquillità_text"],
     "ritrutturato_text": ["totalmente_ristrutturare_text", "finemente_ristrutturare_text", "interamente_ristrutturare_text", "completamente_ristrutturare_text", "appena_ristrutturare_text", "parzialmente_ristrutturare_text", "ristrutturare_internamente_text", "ristrutturazione_text"]
 }
