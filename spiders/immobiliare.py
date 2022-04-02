@@ -1,10 +1,6 @@
 import pandas as pd
 import requests
 import re
-import numpy as np
-from custom_parser import typology_map
-from utils.custom_utils import swap_dict
-from nlp.others import handle_text_descriptions
 from scrapers.bots.Immobiliare import ImmobiliareHouses
 
 
